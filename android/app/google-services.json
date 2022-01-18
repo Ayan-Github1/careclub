@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "923157744808",
+    "project_id": "careclub-8125a",
+    "storage_bucket": "careclub-8125a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:923157744808:android:e545e5fb8278a6ac3c069d",
+        "android_client_info": {
+          "package_name": "com.example.careclub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "923157744808-cghijs6nhrv79kpdjsangujn9upmks85.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlV4A-LcSV4XQezRZ4zhwbAHIW4I1fWvs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "923157744808-cghijs6nhrv79kpdjsangujn9upmks85.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
