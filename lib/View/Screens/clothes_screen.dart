@@ -28,6 +28,7 @@ class _ClothesScreenState extends State<ClothesScreen> {
     return Scaffold(
         appBar: AppBar(
           title: const Text("CLOTHES"),
+          backgroundColor: btnColor,
         ),
         body: SingleChildScrollView(
           child: Container(

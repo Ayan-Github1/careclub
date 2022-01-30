@@ -94,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           password: _passwordController.text,
                         );
                         if (rec == 'success') {
-                          Navigator.push(
+                          Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                               builder: (context) => const HomeScreen(),

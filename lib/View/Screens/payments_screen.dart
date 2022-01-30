@@ -11,6 +11,7 @@ class PaymentScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('PAYMENTS'),
+        backgroundColor: btnColor,
       ),
       body: SafeArea(
         child: Column(

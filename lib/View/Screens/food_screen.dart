@@ -13,6 +13,7 @@ class FoodScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("FOOD"),
+        backgroundColor: btnColor,
       ),
       body: SingleChildScrollView(
         child: Container(

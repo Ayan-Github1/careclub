@@ -13,6 +13,7 @@ class DonationScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Donation'),
+        backgroundColor: btnColor,
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 24),

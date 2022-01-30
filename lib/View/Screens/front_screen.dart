@@ -1,3 +1,4 @@
+import 'package:careclub/View/Screens/login_screen.dart';
 import 'package:careclub/View/Utilities/colors.dart';
 import 'package:careclub/View/Utilities/material_button.dart';
 import 'package:flutter/material.dart';
@@ -47,10 +48,10 @@ class FrontScreen extends StatelessWidget {
                     text: 'LOGIN AS DONATOR',
                     radius: 18,
                     function: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const OTPScreen(),
+                          builder: (context) => const LoginScreen(),
                         ),
                       );
                     },
@@ -65,10 +66,10 @@ class FrontScreen extends StatelessWidget {
                     text: 'LOGIN AS ADMIN',
                     radius: 18,
                     function: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const OTPScreen(),
+                          builder: (context) => const LoginScreen(),
                         ),
                       );
                     },

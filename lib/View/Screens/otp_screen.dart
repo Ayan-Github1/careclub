@@ -123,8 +123,7 @@ class _OTPScreenState extends State<OTPScreen> {
                     text: otp,
                     radius: 18,
                     function: () {
-                      if (_otpController.text.isEmpty &&
-                          _otpForm.currentState!.validate()) {
+                      if (_otpController.text.isEmpty) {
                         sendOtp();
                         setState(() {
                           otp = 'NEXT';
