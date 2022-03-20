@@ -8,6 +8,7 @@ class InputFormField extends StatelessWidget {
   final IconData icon;
   final String errorMessage;
   final TextEditingController generalController;
+  final TextInputType textInputType;
 
   const InputFormField({
     Key? key,
@@ -17,6 +18,7 @@ class InputFormField extends StatelessWidget {
     required this.icon,
     required this.errorMessage,
     required this.generalController,
+    required this.textInputType,
   }) : super(key: key);
 
   @override
@@ -47,6 +49,7 @@ class InputFormField extends StatelessWidget {
       // height: 55,
       // width: 350,
     return TextFormField(
+      keyboardType: textInputType,
       decoration: inputDeco,
       controller: generalController,
       validator: (value) {

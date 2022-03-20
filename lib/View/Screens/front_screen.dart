@@ -1,10 +1,10 @@
 import 'package:careclub/View/Screens/login_screen.dart';
+import 'package:careclub/View/Screens/otp_screen.dart';
 import 'package:careclub/View/Utilities/colors.dart';
 import 'package:careclub/View/Utilities/material_button.dart';
 import 'package:flutter/material.dart';
 import 'package:ms_undraw/ms_undraw.dart';
 
-import 'otp_screen.dart';
 
 class FrontScreen extends StatelessWidget {
   const FrontScreen({Key? key}) : super(key: key);
@@ -45,7 +45,7 @@ class FrontScreen extends StatelessWidget {
                     height: 55,
                     width: 350,
                     color: btnColor,
-                    text: 'LOGIN AS DONATOR',
+                    text: 'LOGIN',
                     radius: 18,
                     function: () {
                       Navigator.pushReplacement(
@@ -63,13 +63,13 @@ class FrontScreen extends StatelessWidget {
                     height: 55,
                     width: 350,
                     color: btnColor,
-                    text: 'LOGIN AS ADMIN',
+                    text: 'REGISTER',
                     radius: 18,
                     function: () {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const LoginScreen(),
+                          builder: (context) => const OTPScreen(),
                         ),
                       );
                     },

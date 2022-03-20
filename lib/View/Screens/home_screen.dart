@@ -56,17 +56,19 @@ class _HomeScreenState extends State<HomeScreen> {
 
     //CODE HAS BEEN SHIFTED TO FEED SCREEN FILE BECAUSE OF BOTTOM NAVIGATION IMPLEMENTATION.
     //ALL POSTS SCREEN WAS HOME SCREEN ITSELF AND IN NAVIGATION HOME CLASS WAS CALLED FROM HOME CLASS
-    //SINCE WE NEED TO TRAVEL TO HOME SCREEN FROM ANOTHER SCREEN THROUGH BOTTOM NAV 
+    //SINCE WE NEED TO TRAVEL TO HOME SCREEN FROM ANOTHER SCREEN THROUGH BOTTOM NAV
     //CALLING SAME CLASS PROBLEM WAS OCCURRING
     //SO SEPERATE IMPLEMENTATION IS PROVIDED FOR POST VIEWING
 
     return Scaffold(
       body: PageView(
+        physics: const NeverScrollableScrollPhysics(),
         children: homeScreenItems,
         controller: pageController,
         onPageChanged: onPageChanged,
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         showSelectedLabels: false,
         showUnselectedLabels: false,
         items: <BottomNavigationBarItem>[

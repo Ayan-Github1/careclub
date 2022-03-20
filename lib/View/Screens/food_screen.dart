@@ -46,6 +46,7 @@ class FoodScreen extends StatelessWidget {
                 icon: Icons.location_pin,
                 errorMessage: 'Please enter this field',
                 generalController: _locationController,
+                textInputType: TextInputType.text,
               ),
               const SizedBox(
                 height: 30.0,
@@ -57,6 +58,7 @@ class FoodScreen extends StatelessWidget {
                 icon: Icons.production_quantity_limits,
                 errorMessage: 'Please enter this field',
                 generalController: _quantityController,
+                textInputType: TextInputType.text,
               ),
               const SizedBox(
                 height: 30.0,

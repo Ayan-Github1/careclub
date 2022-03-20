@@ -101,6 +101,7 @@ class _OTPScreenState extends State<OTPScreen> {
                     icon: Icons.mail,
                     errorMessage: 'Email must not be empty',
                     generalController: emailController,
+                    textInputType: TextInputType.emailAddress,
                   ),
                   const SizedBox(
                     height: 20.0,
@@ -112,6 +113,7 @@ class _OTPScreenState extends State<OTPScreen> {
                     icon: Icons.vpn_key,
                     errorMessage: 'Please fill in the OTP',
                     generalController: _otpController,
+                    textInputType: TextInputType.number,
                   ),
                   const SizedBox(
                     height: 20.0,

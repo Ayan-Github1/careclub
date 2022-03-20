@@ -61,6 +61,7 @@ class _ClothesScreenState extends State<ClothesScreen> {
                   icon: Icons.location_pin,
                   errorMessage: 'Please enter this field',
                   generalController: _locationController,
+                  textInputType: TextInputType.text,
                 ),
                 const SizedBox(
                   height: 30.0,

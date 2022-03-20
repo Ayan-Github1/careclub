@@ -66,6 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     icon: Icons.mail,
                     errorMessage: 'Email must not be empty',
                     generalController: _emailController,
+                    textInputType: TextInputType.emailAddress,
                   ),
                   const SizedBox(
                     height: 20.0,
@@ -77,6 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     icon: Icons.password,
                     errorMessage: 'Password must not be empty',
                     generalController: _passwordController,
+                    textInputType: TextInputType.text,
                   ),
                   const SizedBox(
                     height: 20.0,
