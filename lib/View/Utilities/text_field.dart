@@ -56,6 +56,7 @@ class InputFormField extends StatelessWidget {
         if (value!.isEmpty) {
           return errorMessage;
         }
+        return null;
       },
     );
   }

@@ -67,4 +67,39 @@ class AuthMethods {
     }
     return result;
   }
+
+  Future<String> registerAsAdmin(
+      {required String email,
+      required String password,
+      required String username}) async {
+    try {
+      if (email.isNotEmpty && password.isNotEmpty && username.isNotEmpty) {
+        UserCredential credential = await auth.createUserWithEmailAndPassword(
+            email: email, password: password);
+
+        UserDetails userDetails = UserDetails(
+          username: username,
+          email: email,
+          uid: credential.user!.uid,
+        );
+        await firestore
+            .collection('admin')
+            .doc(credential.user!.uid)
+            .set(userDetails.toJson());
+
+        result = "success";
+      }
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        //create a toast or snack bar to show weal password
+        print('The password is too weak, Must be greater than six char');
+      } else if (e.code == 'email-already-in-use') {
+        //create a toast or snack bar to show user is registered
+        print('Account already exists');
+      }
+    } catch (e) {
+      return e.toString();
+    }
+    return result;
+  }
 }

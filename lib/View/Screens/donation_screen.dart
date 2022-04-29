@@ -12,8 +12,10 @@ class DonationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Donation'),
+        centerTitle: true,
+        title: const Text('DONATION'),
         backgroundColor: btnColor,
+        elevation: 0,
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 24),

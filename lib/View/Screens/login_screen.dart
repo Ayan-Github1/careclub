@@ -1,3 +1,4 @@
+import 'package:careclub/View/Screens/reset_screen.dart';
 import 'package:careclub/View/Utilities/colors.dart';
 import 'package:careclub/View/Utilities/material_button.dart';
 import 'package:careclub/View/Utilities/text_field.dart';
@@ -39,16 +40,8 @@ class _LoginScreenState extends State<LoginScreen> {
               key: _loginForm,
               child: Column(
                 children: [
-                  const Text(
-                    'LOGIN',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 40.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
                   const SizedBox(
-                    height: 20.0,
+                    height: 50.0,
                   ),
                   SizedBox(
                     height: 150,
@@ -112,6 +105,32 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const SizedBox(
                     height: 20.0,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      GestureDetector(
+                        onTap: () => Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ResetScreen(),
+                          ),
+                        ),
+                        child: Container(
+                          child: const Text(
+                            'Forgot Password?',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: labelColor,
+                            ),
+                          ),
+                          padding: const EdgeInsets.symmetric(vertical: 8),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 120.0,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

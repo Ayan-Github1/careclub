@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:careclub/View/Screens/verification_admin.dart';
 import 'package:careclub/View/Utilities/colors.dart';
 import 'package:careclub/View/Utilities/material_button.dart';
@@ -8,6 +10,10 @@ import 'package:flutter/material.dart';
 import 'package:ms_undraw/ms_undraw.dart';
 import 'package:careclub/View/Screens/otp_screen.dart';
 
+final TextEditingController usernameController = TextEditingController();
+final TextEditingController passwordController = TextEditingController();
+final TextEditingController confirmController = TextEditingController();
+
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
 
@@ -16,21 +22,18 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmController = TextEditingController();
   final _registerForm = GlobalKey<FormState>();
 
-  Object? radioItem = '';
+  // Object? radioItem = '';
   bool isSeclected = false;
-  int val = 0;
+  // int val = 0;
 
   @override
   void dispose() {
     super.dispose();
-    _usernameController.dispose();
-    _passwordController.dispose();
-    _confirmController.dispose();
+    usernameController.dispose();
+    passwordController.dispose();
+    confirmController.dispose();
   }
 
   @override
@@ -63,7 +66,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     radius: 15,
                     icon: Icons.person,
                     errorMessage: 'Username must not be empty',
-                    generalController: _usernameController,
+                    generalController: usernameController,
                     textInputType: TextInputType.text,
                   ),
                   const SizedBox(
@@ -75,7 +78,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     radius: 15,
                     icon: Icons.password,
                     errorMessage: 'Password must not be empty',
-                    generalController: _passwordController,
+                    generalController: passwordController,
                     textInputType: TextInputType.text,
                   ),
                   const SizedBox(
@@ -87,70 +90,57 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     radius: 15,
                     icon: Icons.password,
                     errorMessage: 'Password must not be empty',
-                    generalController: _confirmController,
+                    generalController: confirmController,
                     textInputType: TextInputType.text,
                   ),
                   const SizedBox(
                     height: 10.0,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Row(
-                        children: [
-                          Transform.scale(
-                            scale: 1.2,
-                            child: Radio(
-                              activeColor: btnColor,
-                              value: 0,
-                              groupValue: radioItem,
-                              onChanged: (value) {
-                                setState(
-                                  () {
-                                    radioItem = value;
-                                    isSeclected = true;
-                                  },
-                                );
-                              },
-                            ),
-                          ),
-                          const Text(
-                            "Admin",
-                            style: TextStyle(fontSize: 17),
-                          ),
-                        ],
+                      Checkbox(
+                        activeColor: btnColor,
+                        value: isSeclected,
+                        onChanged: (value) {
+                          setState(
+                            () {
+                              isSeclected = value!;
+                            },
+                          );
+                        },
                       ),
-                      Row(
-                        children: [
-                          Transform.scale(
-                            scale: 1.2,
-                            child: Radio(
-                              activeColor: btnColor,
-                              value: 1,
-                              groupValue: radioItem,
-                              onChanged: (value) {
-                                setState(
-                                  () {
-                                    radioItem = value;
-                                    isSeclected = true;
-                                    val = 1;
-                                  },
-                                );
-                              },
-                            ),
-                          ),
-                          const Text(
-                            "Donator",
-                            style: TextStyle(fontSize: 17),
-                          ),
-                        ],
-                      ),
+                      const Text("Register As Admin")
+                      // Row(
+                      //   children: [
+                      //     Transform.scale(
+                      //       scale: 1.2,
+                      //       child: Radio(
+                      //         activeColor: btnColor,
+                      //         value: 0,
+                      //         groupValue: radioItem,
+                      //         onChanged: (value) {
+                      //           setState(
+                      //             () {
+                      //               radioItem = value;
+                      //               isSeclected = true;
+                      //             },
+                      //           );
+                      //         },
+                      //       ),
+                      //     ),
+                      //     const Text(
+                      //       "Admin",
+                      //       style: TextStyle(fontSize: 17),
+                      //     ),
+                      //   ],
+                      // ),
                     ],
                   ),
                   const SizedBox(
                     height: 20.0,
                   ),
-                  isSeclected == true && val == 0
+                  isSeclected == true
                       ? MaterialBtn(
                           height: 55,
                           width: MediaQuery.of(context).size.width * 0.5,
@@ -158,12 +148,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           text: 'NEXT',
                           radius: 18,
                           function: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const Verfication(),
-                              ),
-                            );
+                            if (passwordController.text ==
+                                confirmController.text) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const Verfication(),
+                                ),
+                              );
+                            } else {
+                              //create a toast or snackbar to show below issue
+                              print("Passwords are not same");
+                            }
                           },
                         )
                       : MaterialBtn(
@@ -173,13 +169,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           text: 'REGISTER',
                           radius: 18,
                           function: () async {
-                            if (_passwordController.text ==
-                                    _confirmController.text &&
+                            if (passwordController.text ==
+                                    confirmController.text &&
                                 _registerForm.currentState!.validate()) {
                               String rec = await AuthMethods().register(
                                 email: emailController.text,
-                                password: _passwordController.text,
-                                username: _usernameController.text,
+                                password: passwordController.text,
+                                username: usernameController.text,
                               );
                               if (rec == 'success') {
                                 Navigator.pushReplacement(

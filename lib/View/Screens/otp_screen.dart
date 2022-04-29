@@ -76,14 +76,6 @@ class _OTPScreenState extends State<OTPScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
-                    'REGISTER',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 40.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
                   SizedBox(
                     height: 180,
                     child: UnDraw(
