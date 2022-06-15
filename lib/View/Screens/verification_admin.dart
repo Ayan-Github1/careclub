@@ -12,16 +12,17 @@ import 'package:flutter/material.dart';
 import '../../ViewModel/auth_methods.dart';
 
 class Verfication extends StatefulWidget {
+  final bool isAdmin;
+
   // final String name, password, confirmPassword;
-  const Verfication({
-    Key? key,
-  }) : super(key: key);
+  const Verfication({Key? key, required this.isAdmin}) : super(key: key);
 
   @override
   _VerficationState createState() => _VerficationState();
 }
 
 class _VerficationState extends State<Verfication> {
+
   PlatformFile? file_1, file_2, file_3, file_4;
   String fileName_1 = "", fileName_2 = "", fileName_3 = "", fileName_4 = "";
   Future<void> filePick(int index) async {
@@ -214,6 +215,7 @@ class _VerficationState extends State<Verfication> {
                       email: emailController.text,
                       password: passwordController.text,
                       username: usernameController.text,
+                      isAdmin: widget.isAdmin, 
                     );
                     if (rec == 'success') {
                       Navigator.pushReplacement(
@@ -230,7 +232,7 @@ class _VerficationState extends State<Verfication> {
                     print('Password do not match');
                   }
                 },
-              ) // FUNCTIONALITY IS NOTHING FOR NOW
+              )
             ],
           ),
         ),

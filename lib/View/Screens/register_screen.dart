@@ -26,6 +26,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   // Object? radioItem = '';
   bool isSeclected = false;
+  String role = "User";
   // int val = 0;
 
   @override
@@ -106,35 +107,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           setState(
                             () {
                               isSeclected = value!;
+                              if (isSeclected == true) {
+                                role = "Admin";
+                              }
                             },
                           );
                         },
                       ),
                       const Text("Register As Admin")
-                      // Row(
-                      //   children: [
-                      //     Transform.scale(
-                      //       scale: 1.2,
-                      //       child: Radio(
-                      //         activeColor: btnColor,
-                      //         value: 0,
-                      //         groupValue: radioItem,
-                      //         onChanged: (value) {
-                      //           setState(
-                      //             () {
-                      //               radioItem = value;
-                      //               isSeclected = true;
-                      //             },
-                      //           );
-                      //         },
-                      //       ),
-                      //     ),
-                      //     const Text(
-                      //       "Admin",
-                      //       style: TextStyle(fontSize: 17),
-                      //     ),
-                      //   ],
-                      // ),
+                      //There was a radio button here. Use if above widget does not workout 
                     ],
                   ),
                   const SizedBox(
@@ -153,7 +134,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const Verfication(),
+                                  builder: (context) => Verfication(
+                                    isAdmin: isSeclected,
+                                  ),
                                 ),
                               );
                             } else {
@@ -200,3 +183,27 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 }
+                     // Row(
+                      //   children: [
+                      //     Transform.scale(
+                      //       scale: 1.2,
+                      //       child: Radio(
+                      //         activeColor: btnColor,
+                      //         value: 0,
+                      //         groupValue: radioItem,
+                      //         onChanged: (value) {
+                      //           setState(
+                      //             () {
+                      //               radioItem = value;
+                      //               isSeclected = true;
+                      //             },
+                      //           );
+                      //         },
+                      //       ),
+                      //     ),
+                      //     const Text(
+                      //       "Admin",
+                      //       style: TextStyle(fontSize: 17),
+                      //     ),
+                      //   ],
+                      // ),

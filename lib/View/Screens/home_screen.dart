@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
+
+
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -44,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   List<Widget> homeScreenItems = [
-    const FeedScreen(),
+    FeedScreen(),
     const SearchScreen(),
     const DonationScreen(), // only for now instead of this activity will be implemented in future
     const ProfileScreen(),

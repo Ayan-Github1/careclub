@@ -1,7 +1,10 @@
+import 'package:careclub/Model/provider.dart';
+import 'package:careclub/Model/user_details.dart';
 import 'package:careclub/View/Screens/donation_screen.dart';
 import 'package:careclub/View/Utilities/colors.dart';
 import 'package:careclub/View/Utilities/post_image_container.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class FeedScreen extends StatefulWidget {
   const FeedScreen({Key? key}) : super(key: key);
@@ -41,6 +44,7 @@ class _FeedScreenState extends State<FeedScreen> {
 
   @override
   Widget build(BuildContext context) {
+    UserDetails? userRole = Provider.of<UserProvider>(context).getUser;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: btnColor,
@@ -49,7 +53,7 @@ class _FeedScreenState extends State<FeedScreen> {
         elevation: 0.0,
         actions: [
           IconButton(
-            icon: const Icon(Icons.wallet_travel),
+            icon: userRole!.role == 'Admin' ? Icon(Icons.add) : Icon(Icons.dashboard_customize_rounded),
             onPressed: () {
               Navigator.push(
                 context,

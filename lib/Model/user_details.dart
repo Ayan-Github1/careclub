@@ -4,26 +4,36 @@ class UserDetails {
   final String username;
   final String email;
   final String uid;
+  final String role;
 
-  const UserDetails({
+   UserDetails({
     required this.username,
     required this.email,
     required this.uid,
+    required this.role
   });
 
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() {
+    return {
         "username": username,
         "email": email,
         "uid": uid,
+        "role": role
       };
-
-  static UserDetails fromSnapshot(DocumentSnapshot snapshot) {
-    var snap = snapshot.data() as Map<String, dynamic>;
-
-    return UserDetails(
-      username: snap["username"],
-      email: snap["email"],
-      uid: snap["uid"],
-    );
   }
+
+  UserDetails.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> snapshot) 
+
+      : username = snapshot.data().toString().contains('username') ? snapshot.get('username') : '',
+        email = snapshot.data().toString().contains('email') ? snapshot.get('email') : '',
+        uid = snapshot.data().toString().contains('uid') ? snapshot.get('uid') : '',
+        role = snapshot.data().toString().contains('role') ? snapshot.get('role') : '';
+
+
+    //  : id = doc.id,
+    //     name = doc.data()!["name"],
+    //     age = doc.data()!["age"],
+    //     salary = doc.data()!["salary"],
+    //     address = Address.fromMap(doc.data()!["address"]),
+
 }

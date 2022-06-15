@@ -8,16 +8,20 @@ class AuthMethods {
 
   Future<UserDetails> getUserDetails() async {
     User currentUser = auth.currentUser!;
-
-    DocumentSnapshot snapshot =
-        await firestore.collection('users').doc(currentUser.uid).get();
+    DocumentSnapshot<Map<String, dynamic>> snapshot;
+    if (currentUser == 'User') {
+      snapshot = await firestore.collection('users').doc(currentUser.uid).get();
+    } else {
+      snapshot = await firestore.collection('admin').doc(currentUser.uid).get();
+    }
     return UserDetails.fromSnapshot(snapshot);
   }
 
-  Future<String> register(
-      {required String email,
-      required String password,
-      required String username}) async {
+  Future<String> register({
+    required String email,
+    required String password,
+    required String username,
+  }) async {
     try {
       if (email.isNotEmpty && password.isNotEmpty && username.isNotEmpty) {
         UserCredential credential = await auth.createUserWithEmailAndPassword(
@@ -27,6 +31,7 @@ class AuthMethods {
           username: username,
           email: email,
           uid: credential.user!.uid,
+          role: 'User',
         );
         await firestore
             .collection('users')
@@ -68,20 +73,22 @@ class AuthMethods {
     return result;
   }
 
-  Future<String> registerAsAdmin(
-      {required String email,
-      required String password,
-      required String username}) async {
+  Future<String> registerAsAdmin({
+    required String email,
+    required String password,
+    required String username,
+    required bool isAdmin,
+  }) async {
     try {
       if (email.isNotEmpty && password.isNotEmpty && username.isNotEmpty) {
         UserCredential credential = await auth.createUserWithEmailAndPassword(
             email: email, password: password);
 
         UserDetails userDetails = UserDetails(
-          username: username,
-          email: email,
-          uid: credential.user!.uid,
-        );
+            username: username,
+            email: email,
+            uid: credential.user!.uid,
+            role: 'Admin');
         await firestore
             .collection('admin')
             .doc(credential.user!.uid)

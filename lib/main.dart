@@ -1,8 +1,12 @@
+import 'dart:async';
+
 import 'package:careclub/Model/provider.dart';
 import 'package:careclub/View/Screens/front_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
+// ignore: import_of_legacy_library_into_null_safe
+// import 'package:splashscreen/splashscreen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,17 +26,13 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (context) => UserProvider(),
-        ),
+        ChangeNotifierProvider.value(value: UserProvider())
       ],
-      child: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
-        child: const MaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: FrontScreen(),
-        ),
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: FrontScreen(),
       ),
     );
   }
 }
+
